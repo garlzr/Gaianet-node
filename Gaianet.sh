@@ -73,23 +73,24 @@ function start(){
 function main_menu() {
     clear
     echo "请选择要执行的操作:"
-    echo "1. 安装节点"
-    echo "2. 更新节点(已最新)"
-    echo "3. 重启节点"
-    echo "4. 备份节点数据"
-    echo "5. 查看节点信息"
-    echo "6. 卸载节点"
-    echo "7. 初始化并启动Gaianet节点"
+    echo "1. 更新环境"
+    echo "2. 初始化并启动Gaianet节点"
+    echo "3. 更新节点(已最新)"
+    echo "4. 重启节点"
+    echo "5. 备份节点数据"
+    echo "6. 查看节点信息"
+    echo "7. 卸载节点"
     read -p "请输入选项（1-7）: " OPTION
 
     case $OPTION in
     1) install_node ;;
-    2) update ;;
-    3) restart ;;
-    4) backup ;;
-    5) info ;;
-    6) uninstall ;;
-    7) start ;;
+    2) start ;;
+    3) update ;;
+    4) restart ;;
+    5) backup ;;
+    6) info ;;
+    7) uninstall ;;
+    
     *) 
         echo "无效选项。" 
         read -p "按任意键返回主菜单..."
