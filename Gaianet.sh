@@ -61,7 +61,7 @@ function info(){
     gaianet info
 }
 
-function gaianet(){
+function start(){
     echo "Initializing gaianet..."
     gaianet init
     echo "Starting gaianet..."
@@ -89,7 +89,7 @@ function main_menu() {
     4) backup ;;
     5) info ;;
     6) uninstall ;;
-    7) gaianet ;;
+    7) start ;;
     *) 
         echo "无效选项。" 
         read -p "按任意键返回主菜单..."
