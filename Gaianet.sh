@@ -24,29 +24,7 @@ function install_node(){
     curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
     
     # 提示用户确认
-    read -p "是否加载环境变量? (请输入回车) " confirm
-    
-    # 检查用户输入
-    if [ -z "$confirm" ]; then
-        confirm="y"
-    fi
-    
-    # 如果用户确认，则加载 .bashrc 并启动 gaianet
-    if [[ "$confirm" =~ ^[Yy]$ ]]; then
-        if [ "$EUID" -ne 0 ]; then
-            echo "非root用户，加载当前用户的.bashrc"
-            source ~/.bashrc
-        else
-            echo "root用户，加载/root/.bashrc"
-            source /root/.bashrc
-        fi
-        sleep 10
-    else
-        echo "未加载 source /root/.bashrc"
-    fi
-    
-    gaianet init
-    gaianet start
+    echo"请加载环境变量（source ~/.bashrc）"    
 }
 
 function restart() {
@@ -85,6 +63,10 @@ function info(){
     gaianet info
 }
 
+function gaianet(){
+    gaianet init
+    gaianet start
+}
 
 # 主菜单
 function main_menu() {
@@ -96,6 +78,7 @@ function main_menu() {
     echo "4. 备份节点数据"
     echo "5. 查看节点信息"
     echo "6. 卸载节点"
+    echo "7. 11"
     read -p "请输入选项（1-5）: " OPTION
 
     case $OPTION in
@@ -105,6 +88,7 @@ function main_menu() {
     4) backup ;;
     5) info ;;
     6) uninstall ;;
+    7) gaianet ;;
     *) 
         echo "无效选项。" 
         read -p "按任意键返回主菜单..."
