@@ -22,8 +22,22 @@ function install_node(){
     fi
     
     curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
-    source /root/.bashrc && gaianet start && gaianet info
-
+    
+    # 提示用户确认
+    read -p "是否加载环境变量? (请输入回车) " confirm
+    
+    # 检查用户输入
+    if [ -z "$confirm" ]; then
+        confirm="y"
+    fi
+    
+    # 如果用户确认，则加载 .bashrc 并启动 gaianet
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        source /root/.bashrc
+    else
+        echo "未加载 source /root/.bashrc"
+    fi
+    gaianet start
 }
 
 function restart() {
