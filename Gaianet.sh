@@ -37,6 +37,7 @@ function install_node(){
     else
         echo "未加载 source /root/.bashrc"
     fi
+    gaianet init
     gaianet start
 }
 
