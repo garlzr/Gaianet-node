@@ -22,9 +22,7 @@ function install_node(){
     fi
     
     curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
-    source /root/.bashrc
-    gaianet start
-    gaianet info
+    source /root/.bashrc && gaianet start && gaianet info
 
 }
 
