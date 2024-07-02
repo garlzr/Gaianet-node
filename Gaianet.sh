@@ -33,10 +33,18 @@ function install_node(){
     
     # 如果用户确认，则加载 .bashrc 并启动 gaianet
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
-        source /root/.bashrc
+        if [ "$EUID" -ne 0 ]; then
+            echo "非root用户，加载当前用户的.bashrc"
+            source ~/.bashrc
+        else
+            echo "root用户，加载/root/.bashrc"
+            source /root/.bashrc
+        fi
+        sleep 10
     else
         echo "未加载 source /root/.bashrc"
     fi
+    
     gaianet init
     gaianet start
 }
