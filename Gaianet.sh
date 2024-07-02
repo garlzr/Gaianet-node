@@ -24,7 +24,7 @@ function install_node(){
     curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
     
     # 提示用户确认
-    echo"请加载环境变量（source ~/.bashrc）"    
+    echo "请加载环境变量（source ~/.bashrc）"
 }
 
 function restart() {
@@ -42,8 +42,6 @@ function backup() {
         mkdir -p "$TARGET_DIR"
     fi
 
-    # 复制文件到目标文件夹
-    cp /root/gaianet/nodeid.json "$TARGET_DIR"
     # 复制文件到目标文件夹
     cp /root/gaianet/nodeid.json "$TARGET_DIR"
     echo "钱包数据已成功拷贝到 $TARGET_DIR"
@@ -64,8 +62,11 @@ function info(){
 }
 
 function gaianet(){
+    echo "Initializing gaianet..."
     gaianet init
+    echo "Starting gaianet..."
     gaianet start
+    echo "Gaianet started."
 }
 
 # 主菜单
@@ -78,8 +79,8 @@ function main_menu() {
     echo "4. 备份节点数据"
     echo "5. 查看节点信息"
     echo "6. 卸载节点"
-    echo "7. 11"
-    read -p "请输入选项（1-5）: " OPTION
+    echo "7. 初始化并启动Gaianet节点"
+    read -p "请输入选项（1-7）: " OPTION
 
     case $OPTION in
     1) install_node ;;
