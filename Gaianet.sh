@@ -73,7 +73,7 @@ function start(){
 function main_menu() {
     clear
     echo "请选择要执行的操作:"
-    echo "1. 更新环境"
+    echo "1. 更新环境(执行完后请执行 source ~/.bashrc)"
     echo "2. 初始化并启动Gaianet节点"
     echo "3. 更新节点(已最新)"
     echo "4. 重启节点"
